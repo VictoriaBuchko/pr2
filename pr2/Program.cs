@@ -1,4 +1,6 @@
-﻿namespace pr2
+﻿using System;
+
+namespace pr2
 {
     internal class Program
     {
@@ -46,6 +48,30 @@
             newArr.SortByParam(false);
             Console.WriteLine("Масив після сортування за спаданням:");
             newArr.Show();
+
+            //-----------------------------------------------------------------------
+            // Домашнє завдання по фнтерфейсам 
+            Console.WriteLine("\nДомашнє завдання\n");
+
+            int valueToCompare = 3;
+
+            Console.WriteLine($"Кількість елементів, менших за {valueToCompare} = {newArr.Less(valueToCompare)}");
+            Console.WriteLine($"Кількість елементів, більших за {valueToCompare}= {newArr.Greater(valueToCompare)}");
+
+            //-----------------------------------------------------------------------
+
+            newArr.ShowEven();
+            newArr.ShowOdd();
+
+
+            //-----------------------------------------------------------------------
+            int[] numbers = { 3, 7, 2, 3, 7, 2, 8 };
+            MyArray myArray = new MyArray(numbers);
+            myArray.Show();
+
+            Console.WriteLine($"Кількість унікальних значень: {myArray.CountDistinct()}");
+            Console.WriteLine($"Кількість елементів, рівних {valueToCompare}: {myArray.EqualToValue(valueToCompare)}");
+
         }
     }
 }

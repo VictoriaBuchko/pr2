@@ -7,7 +7,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace pr2
 {
-    public class MyArray : IOutput, IMath
+    public class MyArray : IOutput, IMath, ICalc, IOutput2, ICalc2
     {
         private int[] array;
 
@@ -51,6 +51,68 @@ namespace pr2
                 Console.WriteLine("Неправильний індекс!");
                 return -1;
             }
+        }
+
+        // реалізація інтерфейсів з 1 завдання Less, Greater
+        public int Less(int valueToCompare)
+        {
+            int count = 0;
+            foreach (int value in array)
+            {
+                if (value < valueToCompare)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        public int Greater(int valueToCompare)
+        {
+            int count = 0;
+            foreach (int value in array)
+            {
+                if (value > valueToCompare)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        public void ShowEven()
+        {
+            Console.Write("Парні значення: ");
+            foreach (int value in array)
+            {
+                if (value % 2 == 0)
+                {
+                    Console.Write(value + " ");
+                }
+            }
+            Console.WriteLine();
+        }
+
+        public void ShowOdd()
+        {
+            Console.Write("Непарні значення: ");
+            foreach (int value in array)
+            {
+                if (value % 2 != 0)
+                {
+                    Console.Write(value + " ");
+                }
+            }
+            Console.WriteLine();
+        }
+
+        public int CountDistinct()
+        {
+            return array.Distinct().Count();//Distinct() повертає тільки унікальні значення масиву, а Count() підраховує їх кулькість 
+        }
+
+        public int EqualToValue(int valueToCompare)
+        {
+            return array.Count(x => x == valueToCompare);
         }
 
         public int Size()
